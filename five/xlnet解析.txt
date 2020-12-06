@@ -1,0 +1,4 @@
+从training.py入手读取xlnet参数配置
+从xlnet.py(185行)读取参数配置信息
+由于xlnet融合在modeling.py中transformer_xl（400行间后面的中文注释）的方法中了。
+双流自注意力方法在two_stream_rel_attn方法中331行中（后面的中文注释）
