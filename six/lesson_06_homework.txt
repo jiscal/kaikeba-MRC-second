@@ -1,0 +1,19 @@
+﻿简答题： 
+
+
+
+1、ERNIE 1.0 (20'), XLNET(20'), RoBERTa(20'), ALBERT(20') 分别基于 BERT 做了哪些改进？
+答：
+ERNIE 利用实体和短语mask。输入层增加了Dialog embedding，去掉了segment embedding,利用了多轮对话修改NSP任务。
+XLNET将AR和AE的优点结合起来，它是一个单向的预训练模型。采用了排列组合的输入方法。它预训练时候求的是双流自注意力，计算两套attention。
+同时它利用的也是相对位置的Encoding,同时它还要衡量两个词是否在同一个segment。训练方法上数据输入，采样方式，CLS放在后面。它预测mask
+是出于性能。
+RoBERTa 规模、算力和数据上更长的训练时间、更大的batch size 更多的训练数据
+训练方法去掉了NSP任务，采用了动态MASK和文本编码。
+ALBERT采用了两种减少参数方法（矩阵分解和参数共享），利用SOP替代了NSP,n-gram MASK.
+
+
+
+2、ALBERT为什么用 SOP 任务替代BERT 中的 NSP 任务？(20')
+答：1、SOP补偿了一部分因embedding 和 FFN 共享而损失的性能,提高性能。2、NSP由于训练时候要同时学习主题预测，和通顺预测，比较难，SOP
+将负样本换成了同一篇文章中的两个逆序的句子，进而消除了主题预测。
